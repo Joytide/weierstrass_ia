@@ -1,6 +1,6 @@
 # Project Report for Weierstrass function approximation with genetic algorithm
 
-Clovis Carlier TD-P
+The repository can be found at https://github.com/Joytide/weierstrass_ia
 
 ## Introduction
 
@@ -111,7 +111,7 @@ This question is tricky, because it was asked with a "before you converge to a s
 
 The result is as expected: generations decrease while time increase when we increase the initial population count.
 
-![Stats](./stats.png "Stats")
+![Stats](stats.png "Stats")
 
 
 
@@ -122,6 +122,3 @@ Basically, I've design my algorithm to be precise, not efficient. This is highly
 The question is, what is the solution? The solution was probably chosen by hand so we can expect 2 decimal places only, taking into account the noise, it is perhaps around $(0.35,15.2)$ or nowhere near it, depending on the noise intensity. However, let's not take into account the noise, indeed, we won't be able to reach a fitness of 0, it is impossible with noise, but how do we find the closest IV to match the sample, how do we find the lowest fitness?
 
 Well, dichotomy. I basically brute-forced with another dichotomy program the best $a$, so I know where I should go from here. But after doing all I could, which consisted in implementing the dichotomy in the cross overs and adding a condition to jump out of local minima in the mutations part by changing a small percentage of a and taking into account the generation, I ran it a few times and it would never find the number I assumed to be the best in less then a not acceptable period of time (a few minutes).  The best possible fitness I calculated was $0.7351051480069459$ and often got within $10^{-11}$ approximation (which is really nice considering our $a$ are $10^{-16}$) in less then a minute for a pop=1000. I assume my mutation is highly disputable and could be improved with using logs and power of gen instead of $gen^2$ but it didn't take the time to do it. 
-
-
-

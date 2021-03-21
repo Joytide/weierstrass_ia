@@ -61,11 +61,18 @@ def parents(pop,n_parents,samples):
 def load_samples():
     import os
     #print(os.getcwd())
-    with open("./PROJET/temperature_sample.csv","r+") as sample:
-        data=[line.strip().split(";") for line in sample.readlines()][1:]
-        samples={}
-        for line in data:
-            samples[float(line[0])]=float(line[1])
+    try:
+        with open("./PROJET/temperature_sample.csv","r+") as sample:
+            data=[line.strip().split(";") for line in sample.readlines()][1:]
+            samples={}
+            for line in data:
+                samples[float(line[0])]=float(line[1])
+    except:
+        with open("./temperature_sample.csv","r+") as sample:
+            data=[line.strip().split(";") for line in sample.readlines()][1:]
+            samples={}
+            for line in data:
+                samples[float(line[0])]=float(line[1])
     return samples
 
 def main():
